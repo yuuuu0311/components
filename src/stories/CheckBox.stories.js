@@ -1,7 +1,7 @@
 import { CheckBox } from "./CheckBox";
 
 export default {
-    title: "components/CheckBox",
+    title: "components/Check Box",
     component: CheckBox,
     tags: ["autodocs"],
     argTypes: {

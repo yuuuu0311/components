@@ -1,7 +1,7 @@
 import { SwitchButton } from "./SwitchButton";
 
 export default {
-    title: "components/SwitchButton",
+    title: "components/Switch Button",
     component: SwitchButton,
     tags: ["autodocs"],
     argTypes: {

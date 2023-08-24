@@ -22,30 +22,31 @@ export const SwitchButton = ({ theme, disable, active }) => {
             {
                 "bg-neutral-100 ": theme == "neutral",
                 "bg-neutral-300 before:translate-x-6":
-                    theme == "neutral" && isActive,
+                    theme == "neutral" && (isActive || active),
             },
             {
                 "bg-blue-200 ": theme == "primary",
                 "bg-blue-500 before:translate-x-6":
-                    theme == "primary" && isActive,
+                    theme == "primary" && (isActive || active),
             },
             {
                 "bg-neutral-200 ": theme == "secondary",
                 "bg-neutral-500 before:translate-x-6":
-                    theme == "secondary" && isActive,
+                    theme == "secondary" && (isActive || active),
             },
             {
                 "bg-neutral-200 ": theme == "success",
                 "bg-green-500 before:translate-x-6":
-                    theme == "success" && isActive,
+                    theme == "success" && (isActive || active),
             },
             {
                 "bg-red-200 ": theme == "danger",
                 "bg-red-500 before:translate-x-6":
-                    theme == "danger" && isActive,
+                    theme == "danger" && (isActive || active),
             },
             {
                 "bg-neutral-100 ": disable,
+                "bg-neutral-300 ": disable && active,
             }
         )
     );

@@ -26,24 +26,27 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
             {
                 "border-neutral-200": theme == "neutral",
                 "border-neutral-300 bg-neutral-300":
-                    theme == "neutral" && isCheck,
+                    theme == "neutral" && (isCheck || checked),
             },
             {
                 "border-blue-300": theme == "primary",
-                "border-blue-500 bg-blue-500": theme == "primary" && isCheck,
+                "border-blue-500 bg-blue-500":
+                    theme == "primary" && (isCheck || checked),
             },
             {
                 "border-neutral-300": theme == "secondary",
                 "border-neutral-500 bg-neutral-500":
-                    theme == "secondary" && isCheck,
+                    theme == "secondary" && (isCheck || checked),
             },
             {
                 "border-green-300": theme == "success",
-                "border-green-500 bg-green-500": theme == "success" && isCheck,
+                "border-green-500 bg-green-500":
+                    theme == "success" && (isCheck || checked),
             },
             {
                 "border-red-300": theme == "danger",
-                "border-red-500 bg-red-500": theme == "danger" && isCheck,
+                "border-red-500 bg-red-500":
+                    theme == "danger" && (isCheck || checked),
             },
             {
                 "bg-neutral-100 border-neutral-300": disable,
@@ -51,17 +54,13 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
         )
     );
     const inputClass = twMerge(className("appearance-none"));
-    const iconClass = twMerge(
+    const iconClasses = twMerge(
         className(
             "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 text-transparent transition",
             {
-                "scale-100 text-white": isCheck,
+                "scale-100 text-white": isCheck || checked,
             }
         )
-    );
-
-    const iconClasses = twMerge(
-        className("appearance-none w-full h-full transition absolute")
     );
 
     // component
@@ -73,11 +72,11 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
                     name="CheckBox"
                     id={id}
                     className={inputClass}
-                    checked={checked}
+                    checked={isCheck}
                     disabled={disable}
                     onChange={handleChange}
                 />
-                <MdOutlineDone className={iconClass} />
+                <MdOutlineDone className={iconClasses} />
             </div>
             <label htmlFor={id}>{label}</label>
         </div>

@@ -12,7 +12,7 @@ export default {
     },
     args: {
         theme: "neutral",
-        expend: true,
+        expend: false,
         title: "Accordian Title",
         contentList: [
             {
@@ -28,12 +28,6 @@ export default {
                 link: "#",
             },
         ],
-    },
-};
-
-export const neutral = {
-    args: {
-        theme: "neutral",
     },
 };
 

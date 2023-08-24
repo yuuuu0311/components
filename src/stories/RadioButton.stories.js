@@ -1,7 +1,7 @@
 import { RadioButton } from "./RadioButton";
 
 export default {
-    title: "components/RadioButton",
+    title: "components/Radio Button",
     component: RadioButton,
     tags: ["autodocs"],
     argTypes: {

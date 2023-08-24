@@ -20,34 +20,42 @@ export const Accordian = ({ theme, title, contentList, expend }) => {
 
     // style
     const titleClasses = twMerge(
-        className("flex justify-between items-center py-2 px-4 transition", {
-            "text-neutral-600 bg-white hover:bg-neutral-100 active:bg-neutral-200 active:text-neutral-700":
-                theme == "neutral",
-            "bg-neutral-100": theme == "neutral" && isExpaned,
+        className(
+            "flex justify-between items-center py-2 px-4 transition",
+            {
+                "text-neutral-600 bg-white hover:bg-neutral-100 active:bg-neutral-200 active:text-neutral-700":
+                    theme == "neutral",
+                "bg-neutral-100": theme == "neutral" && (isExpaned || expend),
+            },
+            {
+                "text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700":
+                    theme == "primary",
+                "bg-blue-600": theme == "primary" && (isExpaned || expend),
+            },
+            {
+                "text-white bg-neutral-500 hover:bg-neutral-600 active:bg-neutral-700":
+                    theme == "secondary",
+                "bg-neutral-600": theme == "secondary" && (isExpaned || expend),
+            },
+            {
+                "text-white bg-green-500 hover:bg-green-600 active:bg-green-700":
+                    theme == "success",
+                "bg-green-600 hover:bg-green-600 active:bg-green-700":
+                    theme == "success" && (isExpaned || expend),
+            },
 
-            "text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700":
-                theme == "primary",
-            "bg-blue-600": theme == "primary" && isExpaned,
-
-            "text-white bg-neutral-500 hover:bg-neutral-600 active:bg-neutral-700":
-                theme == "secondary",
-            "bg-neutral-600": theme == "secondary" && isExpaned,
-
-            "text-white bg-green-500 hover:bg-green-600 active:bg-green-700":
-                theme == "success",
-            "bg-green-600 hover:bg-green-600 active:bg-green-700":
-                theme == "success" && isExpaned,
-
-            "text-white bg-red-500 hover:bg-red-600 active:bg-red-700":
-                theme == "danger",
-            "bg-red-600 hover:bg-red-600 active:bg-red-700":
-                theme == "danger" && isExpaned,
-        })
+            {
+                "text-white bg-red-500 hover:bg-red-600 active:bg-red-700":
+                    theme == "danger",
+                "bg-red-600 hover:bg-red-600 active:bg-red-700":
+                    theme == "danger" && (isExpaned || expend),
+            }
+        )
     );
 
     const iconClasses = twMerge(
         className("rotate-0 transition", {
-            "-rotate-180": isExpaned,
+            "-rotate-180": isExpaned || expend,
         })
     );
 
@@ -75,7 +83,7 @@ export const Accordian = ({ theme, title, contentList, expend }) => {
                 {title}
                 <MdKeyboardArrowDown className={iconClasses} />
             </h3>
-            {isExpaned && (
+            {(isExpaned || expend) && (
                 <ul className={listWrapClasses}>
                     {contentList.map((item, index) => {
                         return (

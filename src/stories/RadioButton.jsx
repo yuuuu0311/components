@@ -25,23 +25,25 @@ export const RadioButton = ({ id, label, theme, disable, checked }) => {
             "relative w-4 h-4 border rounded-full transition",
             {
                 "border-neutral-200": theme == "neutral",
-                "border-neutral-300": theme == "neutral" && isCheck,
+                "border-neutral-300":
+                    theme == "neutral" && (isCheck || checked),
             },
             {
                 "border-blue-300": theme == "primary",
-                "border-blue-500": theme == "primary" && isCheck,
+                "border-blue-500": theme == "primary" && (isCheck || checked),
             },
             {
                 "border-neutral-300": theme == "secondary",
-                "border-neutral-500": theme == "secondary" && isCheck,
+                "border-neutral-500":
+                    theme == "secondary" && (isCheck || checked),
             },
             {
                 "border-green-300": theme == "success",
-                "border-green-500": theme == "success" && isCheck,
+                "border-green-500": theme == "success" && (isCheck || checked),
             },
             {
                 "border-red-300": theme == "danger",
-                "border-red-500": theme == "danger" && isCheck,
+                "border-red-500": theme == "danger" && (isCheck || checked),
             }
         )
     );
@@ -51,22 +53,23 @@ export const RadioButton = ({ id, label, theme, disable, checked }) => {
         className(
             "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-box border-2 border-white w-full h-full rounded-full opacity-0 transition",
             {
-                "border-2 border-white opacity-1": isCheck,
+                "border-2 border-white opacity-1": isCheck || checked,
             },
             {
-                "text-neutral-300": theme == "neutral" && isCheck,
+                "text-neutral-300": theme == "neutral" && (isCheck || checked),
             },
             {
-                "text-blue-500": theme == "primary" && isCheck,
+                "text-blue-500": theme == "primary" && (isCheck || checked),
             },
             {
-                "text-neutral-500": theme == "secondary" && isCheck,
+                "text-neutral-500":
+                    theme == "secondary" && (isCheck || checked),
             },
             {
-                "text-green-500": theme == "success" && isCheck,
+                "text-green-500": theme == "success" && (isCheck || checked),
             },
             {
-                "text-red-500": theme == "danger" && isCheck,
+                "text-red-500": theme == "danger" && (isCheck || checked),
             }
         )
     );

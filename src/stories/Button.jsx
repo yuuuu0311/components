@@ -1,56 +1,56 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./button.css";
+import { useState } from "react";
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-    const mode = primary
-        ? "storybook-button--primary"
-        : "storybook-button--secondary";
-    return (
-        <button
-            type="button"
-            className={[
-                "storybook-button",
-                `storybook-button--${size}`,
-                mode,
-            ].join(" ")}
-            style={backgroundColor && { backgroundColor }}
-            {...props}
-        >
-            {label}
-        </button>
+// for style
+import className from "classnames";
+import { twMerge } from "tailwind-merge";
+import "./style.css";
+
+export const Button = ({ children, theme, outline, shape }) => {
+    const btnClasses = twMerge(
+        className(
+            "flex items-center justify-center gap-2 box-border py-1 px-6 border border-solid border-current transition",
+            {
+                "text-neutral-500 bg-white hover:bg-neutral-100 active:bg-neutral-200 active:text-neutral-600":
+                    theme == "neutral",
+                "text-neutral-500 bg-transprant hover:bg-neutral-100 active:bg-neutral-200 active:text-neutral-500":
+                    theme == "neutral" && outline,
+
+                "text-white bg-blue-500 border-blue-500 hover:bg-blue-600 hover:border-blue-600 active:bg-blue-700 active:border-blue-700":
+                    theme == "primary",
+                "text-blue-500 bg-transprant border-blue-500 hover:bg-blue-50 hover:border-blue-500 active:bg-blue-100 active:border-blue-500":
+                    theme == "primary" && outline,
+
+                "text-white bg-neutral-500 border-neutral-500 hover:bg-neutral-600 hover:border-neutral-600 active:bg-neutral-700 active:border-neutral-700":
+                    theme == "secondary",
+                "text-neutral-500 bg-transparent border-neutral-500 hover:bg-neutral-50 hover:border-neutral-500 active:bg-neutral-100 active:border-neutral-500":
+                    theme == "secondary" && outline,
+
+                "text-white bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600 active:bg-green-700 active:border-green-700":
+                    theme == "success",
+                "text-green-500 bg-transparent hover:bg-green-50 hover:border-green-500 active:bg-green-100 active:border-green-500":
+                    theme == "success" && outline,
+
+                "text-white bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600 active:bg-red-700 active:border-red-700":
+                    theme == "danger",
+                "text-red-500 bg-transparent hover:bg-red-50 hover:text-red-500 active:bg-red-100 active:text-red-500":
+                    theme == "danger" && outline,
+
+                rounded: shape == "rounded",
+                "rounded-full": shape == "rounded-full",
+            }
+        )
     );
+
+    return <button className={btnClasses}>{children}</button>;
 };
 
 Button.propTypes = {
     /**
-     * Is this the principal call to action on the page?
+     *
      */
-    primary: PropTypes.bool,
-    /**
-     * What background color to use
-     */
-    backgroundColor: PropTypes.string,
-    /**
-     * How large should the button be?
-     */
-    size: PropTypes.oneOf(["small", "medium", "large"]),
-    /**
-     * Button contents
-     */
-    label: PropTypes.string.isRequired,
-    /**
-     * Optional click handler
-     */
-    onClick: PropTypes.func,
-};
-
-Button.defaultProps = {
-    backgroundColor: null,
-    primary: false,
-    size: "medium",
-    onClick: undefined,
+    theme: PropTypes.string,
+    outline: PropTypes.bool,
+    shape: PropTypes.oneOf(["rounded", "rounded-full"]),
 };
