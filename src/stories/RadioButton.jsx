@@ -83,6 +83,7 @@ export const RadioButton = ({ id, label, theme, disable, checked }) => {
                     name="Radio Button"
                     id={id}
                     disabled={disable}
+                    defaultChecked={checked4j}
                     className={radioClasses}
                     onChange={handleChange}
                 />

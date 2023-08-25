@@ -13,7 +13,7 @@ export default {
     args: {
         theme: "neutral",
         label: "check box",
-        checked: false,
+        check: false,
         disable: false,
     },
 };

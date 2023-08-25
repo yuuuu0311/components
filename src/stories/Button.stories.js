@@ -15,6 +15,7 @@ export default {
         theme: "neutral",
         outline: false,
         shape: "rounded",
+        disable: false,
     },
 };
 

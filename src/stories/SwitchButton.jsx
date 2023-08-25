@@ -62,7 +62,7 @@ export const SwitchButton = ({ theme, disable, active }) => {
                 className={iconClasses}
                 type="checkbox"
                 name="switch-button"
-                checked={isActive}
+                defaultChecked={active}
                 disabled={disable}
                 onChange={handleChange}
             />

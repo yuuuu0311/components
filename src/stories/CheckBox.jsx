@@ -9,9 +9,9 @@ import "./style.css";
 // icon
 import { MdOutlineDone } from "react-icons/md";
 
-export const CheckBox = ({ id, label, theme, disable, checked }) => {
+export const CheckBox = ({ id, label, theme, disable, check }) => {
     // state
-    const [isCheck, setCheck] = useState(checked);
+    const [isCheck, setCheck] = useState(check);
 
     // handler
     const handleChange = () => {
@@ -26,27 +26,27 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
             {
                 "border-neutral-200": theme == "neutral",
                 "border-neutral-300 bg-neutral-300":
-                    theme == "neutral" && (isCheck || checked),
+                    theme == "neutral" && (isCheck || check),
             },
             {
                 "border-blue-300": theme == "primary",
                 "border-blue-500 bg-blue-500":
-                    theme == "primary" && (isCheck || checked),
+                    theme == "primary" && (isCheck || check),
             },
             {
                 "border-neutral-300": theme == "secondary",
                 "border-neutral-500 bg-neutral-500":
-                    theme == "secondary" && (isCheck || checked),
+                    theme == "secondary" && (isCheck || check),
             },
             {
                 "border-green-300": theme == "success",
                 "border-green-500 bg-green-500":
-                    theme == "success" && (isCheck || checked),
+                    theme == "success" && (isCheck || check),
             },
             {
                 "border-red-300": theme == "danger",
                 "border-red-500 bg-red-500":
-                    theme == "danger" && (isCheck || checked),
+                    theme == "danger" && (isCheck || check),
             },
             {
                 "bg-neutral-100 border-neutral-300": disable,
@@ -58,7 +58,7 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
         className(
             "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 text-transparent transition",
             {
-                "scale-100 text-white": isCheck || checked,
+                "scale-100 text-white": isCheck || check,
             }
         )
     );
@@ -69,10 +69,10 @@ export const CheckBox = ({ id, label, theme, disable, checked }) => {
             <div className={inputWrapClass}>
                 <input
                     type="checkbox"
-                    name="CheckBox"
+                    name="checkbox"
                     id={id}
+                    defaultChecked={check}
                     className={inputClass}
-                    checked={isCheck}
                     disabled={disable}
                     onChange={handleChange}
                 />
@@ -87,6 +87,6 @@ CheckBox.propTypes = {
     id: PropTypes.number,
     theme: PropTypes.string,
     label: PropTypes.string,
-    checked: PropTypes.bool,
+    check: PropTypes.bool,
     disable: PropTypes.bool,
 };

@@ -7,7 +7,7 @@ import className from "classnames";
 import { twMerge } from "tailwind-merge";
 import "./style.css";
 
-export const Button = ({ children, theme, outline, shape }) => {
+export const Button = ({ children, theme, outline, shape, disable }) => {
     const btnClasses = twMerge(
         className(
             "flex items-center justify-center gap-2 box-border py-1 px-6 border border-solid border-current transition",
@@ -39,11 +39,24 @@ export const Button = ({ children, theme, outline, shape }) => {
 
                 rounded: shape == "rounded",
                 "rounded-full": shape == "rounded-full",
+
+                "text-neutral-500 bg-neutral-100 border-transparent hover:text-neutral-500 hover:bg-neutral-100 hover:border-transparent active:text-neutral-500 active:bg-neutral-100 active:border-transparent cursor-not-allowed":
+                    disable,
             }
         )
     );
 
-    return <button className={btnClasses}>{children}</button>;
+    return (
+        <>
+            {disable ? (
+                <button className={btnClasses} disabled>
+                    {children}
+                </button>
+            ) : (
+                <button className={btnClasses}>{children}</button>
+            )}
+        </>
+    );
 };
 
 Button.propTypes = {
@@ -53,4 +66,5 @@ Button.propTypes = {
     theme: PropTypes.string,
     outline: PropTypes.bool,
     shape: PropTypes.oneOf(["rounded", "rounded-full"]),
+    disable: PropTypes.bool,
 };
