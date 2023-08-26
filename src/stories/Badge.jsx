@@ -6,6 +6,7 @@ import { useState } from "react";
 import className from "classnames";
 import { twMerge } from "tailwind-merge";
 import "./style.css";
+import { prototype } from "postcss/lib/input";
 
 export const Badge = ({ children, theme, outline }) => {
     const badgeClasses = twMerge(
