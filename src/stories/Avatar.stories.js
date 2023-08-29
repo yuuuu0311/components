@@ -5,16 +5,23 @@ export default {
     component: Avatar,
     tags: ["autodocs"],
     argTypes: {
-        // theme: {
-        //     options: ["neutral", "primary", "secondary", "success", "danger"],
-        //     control: { type: "select" },
-        // },
-        isOnline: false,
+        status: "online",
+    },
+
+    parameters: {
+        backgrounds: {
+            default: "dark",
+            values: [{ name: "dark", value: "#888888" }],
+        },
     },
 };
 
-export const isOnline = {
+export const primary = {
+    args: {},
+};
+
+export const status = {
     args: {
-        isOnline: true,
+        status: "online",
     },
 };
