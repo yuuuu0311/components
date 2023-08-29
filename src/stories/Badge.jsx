@@ -43,4 +43,4 @@ export const Badge = ({ children, theme, outline }) => {
     return <span className={badgeClasses}>{children}</span>;
 };
 
-Badge.PropTypes = {};
+Badge.propTypes = {};
