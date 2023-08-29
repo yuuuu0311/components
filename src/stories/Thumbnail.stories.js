@@ -14,6 +14,6 @@ export default {
 export const Primary = {
     args: {
         addCart: true,
-        isSponsor: false,
+        isSponsor: true,
     },
 };
