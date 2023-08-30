@@ -7,7 +7,10 @@ import className from "classnames";
 import { twMerge } from "tailwind-merge";
 import "./style.css";
 
-export const Avatar = ({ status }) => {
+// icon
+import { MdMode } from "react-icons/md";
+
+export const Avatar = ({ status, isEditMode }) => {
     const avatarClasses = twMerge(
         className("relative w-16 lg:w-20", {
             "brightness-50": status == "offline",
@@ -15,7 +18,13 @@ export const Avatar = ({ status }) => {
     );
 
     const imgWrapClasses = twMerge(
-        className("rounded-full overflow-hidden border-2 border-white ")
+        className(
+            "relative rounded-full overflow-hidden border-2 border-white",
+            {
+                "before:content-[''] before:absolute before:w-full before:h-full before:inset-0 before:bg-black/50":
+                    isEditMode,
+            }
+        )
     );
 
     const statusClasses = twMerge(
@@ -30,6 +39,10 @@ export const Avatar = ({ status }) => {
         )
     );
 
+    const editModeClasses = twMerge(
+        className("absolute inset-0 m-auto w-1/2 h-1/2 text-white")
+    );
+
     return (
         <div className={avatarClasses}>
             <div className={imgWrapClasses}>
@@ -37,6 +50,14 @@ export const Avatar = ({ status }) => {
                     src="https://dinotaeng.com/web/product/medium/202305/5dbcfe683786725441e9ee37ab4bcf9a.png"
                     alt=""
                 />
+
+                {isEditMode ? (
+                    <>
+                        <MdMode className={editModeClasses}></MdMode>
+                    </>
+                ) : (
+                    <></>
+                )}
             </div>
 
             {status ? (
@@ -52,4 +73,5 @@ export const Avatar = ({ status }) => {
 
 Avatar.propTypes = {
     status: PropTypes.oneOf(["online", "offline", "busy", "available"]),
+    isEditMode: PropTypes.bool,
 };
