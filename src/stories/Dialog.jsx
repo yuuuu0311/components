@@ -30,7 +30,7 @@ export const Dialog = ({ id, theme, title, children, closeByBackdrop }) => {
     };
 
     // style
-    const dialogClasses = twMerge(className("rounded lg:max-w-lg"));
+    const dialogClasses = twMerge(className("rounded"));
     const titleClasses = twMerge(
         className("font-bold px-3 py-2", {
             "text-neutral-500 bg-neutral-300": theme == "neutral",
@@ -64,7 +64,7 @@ export const Dialog = ({ id, theme, title, children, closeByBackdrop }) => {
                 <form method="dialog">
                     <div className={titleClasses}>{title}</div>
                     <div className={contentClasses}>{children}</div>
-                    <div className="footer flex justify-center gap-1 p-4">
+                    <div className="footer flex justify-center gap-2 p-4">
                         <Button
                             theme="neutral"
                             shape="rounded"
@@ -90,6 +90,7 @@ export const Dialog = ({ id, theme, title, children, closeByBackdrop }) => {
 
 Dialog.propTypes = {
     id: PropTypes.string,
+    theme: PropTypes.string,
     title: PropTypes.string,
     closeByBackdrop: PropTypes.bool,
 };
