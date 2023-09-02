@@ -7,7 +7,14 @@ import className from "classnames";
 import { twMerge } from "tailwind-merge";
 import "./style.css";
 
-export const Button = ({ children, theme, outline, shape, disable }) => {
+export const Button = ({
+    children,
+    theme,
+    outline,
+    shape,
+    disable,
+    onClickFunc,
+}) => {
     const btnClasses = twMerge(
         className(
             "flex items-center justify-center gap-2 box-border py-1 px-6 border border-solid border-current transition",
@@ -53,7 +60,9 @@ export const Button = ({ children, theme, outline, shape, disable }) => {
                     {children}
                 </button>
             ) : (
-                <button className={btnClasses}>{children}</button>
+                <button className={btnClasses} onClick={onClickFunc}>
+                    {children}
+                </button>
             )}
         </>
     );
