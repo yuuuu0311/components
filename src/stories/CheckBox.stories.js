@@ -18,8 +18,15 @@ export default {
     },
 };
 
-export const primary = {
+export const Primary = {
     args: {
         theme: "primary",
     },
 };
+
+// export const Group = {
+//     args: {
+//         theme: "primary",
+//     },
+//     render: () => <div></div>,
+// };

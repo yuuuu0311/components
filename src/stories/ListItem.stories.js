@@ -1,7 +1,7 @@
 import { ListItem } from "./ListItem";
 
 export default {
-    title: "components/ListItem",
+    title: "components/List Item",
     component: ListItem,
     tags: ["autodocs"],
     argTypes: {
